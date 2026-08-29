@@ -250,7 +250,7 @@
     "rechazar": "Rechazar",
     "masInfo": "Más información",
     "politicaTitulo": "Política de cookies",
-    "politica": "<p>En <strong>datarconsult.com</strong> utilizamos:</p><ul><li><strong>Cookies técnicas necesarias:</strong> permiten el funcionamiento básico del sitio y la protección frente a bots (Cloudflare). No requieren consentimiento y no se pueden desactivar.</li><li><strong>Cookies de analítica (opcionales):</strong> nos ayudan a entender cómo se usa el sitio para mejorarlo. Solo se activan si pulsas <em>Aceptar</em>.</li></ul><p>Puedes cambiar tu decisión en cualquier momento borrando los datos de este sitio en tu navegador. Para consultas sobre privacidad escríbenos a <a href=\"mailto:info@datarconsult.com\">info@datarconsult.com</a>.</p>",
+    "politica": "<p>En <strong>datarconsult.com</strong> utilizamos:</p><ul><li><strong>Cookies técnicas necesarias:</strong> permiten el funcionamiento básico del sitio y la protección frente a bots (Cloudflare). No requieren consentimiento y no se pueden desactivar.</li><li><strong>Cookies de analítica (opcionales):</strong> nos ayudan a entender cómo se usa el sitio para mejorarlo. Solo se activan si pulsas <em>Aceptar</em>.</li></ul><p>Puedes cambiar tu decisión en cualquier momento borrando los datos de este sitio en tu navegador. Para consultas sobre privacidad, <a href=\"#contacto\" class=\"js-contact-service\" data-service=\"Consulta general\" data-message=\"Hola DATAR, tengo una consulta sobre la política de privacidad y el tratamiento de mis datos personales.\">escríbenos desde el formulario de contacto</a>.</p>",
     "cerrar": "Cerrar"
   },
 

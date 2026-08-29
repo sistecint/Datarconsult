@@ -58,7 +58,12 @@
 			if (e.key === 'Escape' || e.keyCode === 27) cerrar();
 		}
 
-		m.addEventListener('click', function (e) { if (e.target === m) cerrar(); });
+		m.addEventListener('click', function (e) {
+			if (e.target === m) { cerrar(); return; }
+			// Si el enlace lleva al formulario de contacto, cierra el modal
+			// para que se vea el formulario ya preseleccionado.
+			if (e.target.closest && e.target.closest('.js-contact-service')) cerrar();
+		});
 		m.querySelector('.cookie-modal__close').addEventListener('click', cerrar);
 		document.addEventListener('keyup', onKey);
 	}

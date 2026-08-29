@@ -16,22 +16,22 @@
 
 	var mensajeAutogenerado = ''; // último texto que pusimos nosotros en el mensaje
 
-	function setService(serviceName) {
+	// serviceName: valor a marcar en el <select> ("Consulta general", etc.)
+	// mensajePersonalizado (opcional): texto exacto para el <textarea>;
+	//   si no se pasa, se usa la plantilla de contenido.json.
+	function setService(serviceName, mensajePersonalizado) {
 		var sel = document.getElementById('service');
-		if (!sel || !serviceName) return;
-
-		// Solo asigna si el servicio existe en el catálogo del <select>.
-		var existe = false;
-		for (var i = 0; i < sel.options.length; i++) {
-			if (sel.options[i].value === serviceName) { existe = true; break; }
+		if (sel && serviceName) {
+			for (var i = 0; i < sel.options.length; i++) {
+				if (sel.options[i].value === serviceName) { sel.value = serviceName; break; }
+			}
 		}
-		if (!existe) return;
-		sel.value = serviceName;
 
 		// Actualiza el mensaje sugerido, salvo que el usuario ya lo haya editado.
 		var msg = document.getElementById('message');
 		if (msg && (msg.value === '' || msg.value === mensajeAutogenerado)) {
-			mensajeAutogenerado = TXT.preseleccion.replace('{servicio}', serviceName);
+			mensajeAutogenerado = mensajePersonalizado
+				|| TXT.preseleccion.replace('{servicio}', serviceName || 'Consulta general');
 			msg.value = mensajeAutogenerado;
 		}
 	}
@@ -43,7 +43,7 @@
 		var el = e.target;
 		if (el && el.closest) el = el.closest('.js-contact-service');
 		if (el && el.classList && el.classList.contains('js-contact-service')) {
-			setService(el.getAttribute('data-service'));
+			setService(el.getAttribute('data-service'), el.getAttribute('data-message'));
 		}
 	}, true);
 
