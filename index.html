@@ -386,22 +386,38 @@
 			<!-- Preselección de servicio en el formulario -->
 			<script>
 				(function () {
+					var mensajeAutogenerado = ''; // último texto que pusimos nosotros en el mensaje
+
 					function setService(serviceName) {
 						var sel = document.getElementById('service');
-						if (sel && serviceName) sel.value = serviceName;
+						if (!sel || !serviceName) return;
+
+						// Solo asigna si el servicio existe en el catálogo del <select>.
+						var existe = false;
+						for (var i = 0; i < sel.options.length; i++) {
+							if (sel.options[i].value === serviceName) { existe = true; break; }
+						}
+						if (!existe) return;
+						sel.value = serviceName;
+
+						// Actualiza el mensaje sugerido, salvo que el usuario ya lo haya editado.
 						var msg = document.getElementById('message');
-						if (msg && serviceName && !msg.value) {
-							msg.value = 'Hola DATAR, me interesa el servicio de ' + serviceName + '. ¿Podemos coordinar una reunión?';
+						if (msg && (msg.value === '' || msg.value === mensajeAutogenerado)) {
+							mensajeAutogenerado = 'Hola DATAR, me interesa el servicio de ' + serviceName + '. ¿Podemos coordinar una reunión?';
+							msg.value = mensajeAutogenerado;
 						}
 					}
 
+					// En fase de captura: la plantilla (Dimension) detiene la propagación
+					// del clic dentro de cada <article>, así que un listener en burbuja
+					// nunca se enteraría de los botones "Formulario".
 					document.addEventListener('click', function (e) {
 						var el = e.target;
 						if (el && el.closest) el = el.closest('.js-contact-service');
 						if (el && el.classList && el.classList.contains('js-contact-service')) {
 							setService(el.getAttribute('data-service'));
 						}
-					});
+					}, true);
 
 					// ---------------------------------------------------------------
 					// Envío del formulario de contacto -> send.php -> info@datarconsult.com
