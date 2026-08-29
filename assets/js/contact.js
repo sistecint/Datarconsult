@@ -6,6 +6,14 @@
 */
 
 (function () {
+	// Textos configurables desde assets/data/contenido.json (los pone render.js).
+	var CFG = ((window.DATAR_CONTENIDO || {}).contacto || {}).formulario || {};
+	var TXT = {
+		preseleccion: CFG.mensajePreseleccion || 'Hola DATAR, me interesa el servicio de {servicio}. ¿Podemos coordinar una reunión?',
+		verificacion: CFG.verificacionPendiente || 'Completa la verificación de seguridad para enviar.',
+		exito: ((window.DATAR_CONTENIDO || {}).contacto || {}).toast || 'Tu información fue enviada, pronto nos ponemos en contacto.'
+	};
+
 	var mensajeAutogenerado = ''; // último texto que pusimos nosotros en el mensaje
 
 	function setService(serviceName) {
@@ -23,7 +31,7 @@
 		// Actualiza el mensaje sugerido, salvo que el usuario ya lo haya editado.
 		var msg = document.getElementById('message');
 		if (msg && (msg.value === '' || msg.value === mensajeAutogenerado)) {
-			mensajeAutogenerado = 'Hola DATAR, me interesa el servicio de ' + serviceName + '. ¿Podemos coordinar una reunión?';
+			mensajeAutogenerado = TXT.preseleccion.replace('{servicio}', serviceName);
 			msg.value = mensajeAutogenerado;
 		}
 	}
@@ -131,7 +139,7 @@
 			if (turnstileActive) {
 				var tk = form.querySelector('[name="cf-turnstile-response"]');
 				if (!tk || !tk.value) {
-					showToast('Completa la verificación de seguridad para enviar.', { stay: true });
+					showToast(TXT.verificacion, { stay: true });
 					return;
 				}
 			}
@@ -155,7 +163,7 @@
 						'— el POST pudo convertirse en GET. Revisa la URL canónica del sitio.');
 				}
 				if (r.data && r.data.ok) {
-					showToast('Tu información fue enviada, pronto nos ponemos en contacto.');
+					showToast(TXT.exito);
 				} else if (r.status === 429 || r.status === 403) {
 					// Límite de envíos o verificación fallida: avisar y dejar reintentar.
 					resetBtn(btn);
@@ -164,12 +172,12 @@
 				} else {
 					console.error('send.php no confirmó el envío:', r.status, r.body);
 					openMailClient();
-					showToast('Tu información fue enviada, pronto nos ponemos en contacto.');
+					showToast(TXT.exito);
 				}
 			}).catch(function (err) {
 				console.error('Error al enviar el formulario:', err);
 				openMailClient();
-				showToast('Tu información fue enviada, pronto nos ponemos en contacto.');
+				showToast(TXT.exito);
 			});
 		});
 	}

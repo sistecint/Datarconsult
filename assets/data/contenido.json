@@ -1,0 +1,258 @@
+{
+  "meta": {
+    "titulo": "DATAR Consulting | Consultoría ambiental y sostenibilidad",
+    "descripcion": "DATAR Consulting: consultoría ambiental, seguridad y salud ocupacional, gestión de sistemas (ISO) y gestión social. Cumplimiento, mejora continua y sostenibilidad para tu organización."
+  },
+
+  "empresa": {
+    "nombre": "DATAR Consulting",
+    "logoAlt": "DATAR Consulting",
+    "telefono": "(507) 6601-5038",
+    "whatsapp": "50766015038",
+    "whatsappTextoGeneral": "Hola DATAR, quisiera una asesoría. ¿Podemos coordinar una reunión?",
+    "email": "info@datarconsult.com",
+    "sitioWeb": "datarconsult.com",
+    "sitioWebUrl": "https://datarconsult.com/",
+    "direccion": "Las Cumbres, Panamá (sede principal)"
+  },
+
+  "hero": {
+    "titulo": "DATAR Consulting",
+    "html": "Descubre cómo innovar para aportar valor a tu organización.<br /> Explora nuevas ideas. Consigue <strong>resultados tangibles</strong>.",
+    "acciones": [
+      { "texto": "Ver servicios", "href": "#servicios", "primary": true },
+      { "texto": "Agendar / Cotizar", "href": "#contacto" }
+    ]
+  },
+
+  "nav": [
+    { "id": "inicio",    "label": "Inicio" },
+    { "id": "servicios", "label": "Servicios" },
+    { "id": "casos",     "label": "Casos de éxito" },
+    { "id": "quienes",   "label": "Quiénes somos" },
+    { "id": "clientes",  "label": "Clientes" },
+    { "id": "contacto",  "label": "Contacto" }
+  ],
+
+  "articulos": [
+    {
+      "id": "inicio",
+      "titulo": "Inicio",
+      "bloques": [
+        { "tipo": "parrafo", "html": "En <strong>DATAR Consulting</strong> asesoramos a empresas y organizaciones sobre cómo afrontar sus desafíos y metas de manera responsable y eficiente, para lograr un impacto económico, social y ambiental sostenible." },
+        { "tipo": "subtitulo", "texto": "¿En qué te apoyamos?" },
+        { "tipo": "lista", "items": [
+          "Cumplimiento normativo ambiental, permisos y trámites.",
+          "Diagnósticos, auditorías, planes de acción y seguimiento.",
+          "Seguridad y salud ocupacional, y sistemas de gestión (ISO).",
+          "Proyectos sostenibles y relacionamiento con comunidades."
+        ] },
+        { "tipo": "subtitulo", "texto": "Sectores atendidos" },
+        { "tipo": "lista-alt", "items": [
+          "Industrial", "Alimenticio", "Construcción",
+          "Generación eléctrica", "Área marítima", "Conservación biológica"
+        ] },
+        { "tipo": "acciones", "items": [
+          { "texto": "Explorar servicios", "href": "#servicios", "primary": true },
+          { "texto": "Tengo un proyecto", "servicio": "Consulta general" }
+        ] }
+      ]
+    },
+
+    {
+      "id": "servicios",
+      "titulo": "Servicios",
+      "bloques": [
+        { "tipo": "parrafo", "html": "Cuatro áreas principales de trabajo. En cada una puedes contactarnos por <strong>WhatsApp</strong> o dejar tus datos en el <strong>formulario</strong> con el servicio preseleccionado." },
+        { "tipo": "separador" },
+        {
+          "tipo": "servicio",
+          "titulo": "1) Gestión Ambiental",
+          "servicioFormulario": "Gestión Ambiental",
+          "whatsappTexto": "Hola DATAR, me interesa Gestión Ambiental. ¿Podemos coordinar una reunión?",
+          "subservicios": [
+            "Asesorías ambientales",
+            "Estudios de Impacto Ambiental (EIA)",
+            "Estudio de Viabilidad Ambiental",
+            "Planes de Manejo Ambiental",
+            "Planes y desarrollo de Auditorías Ambientales (obligatorias)",
+            "Programas de Adecuación y Manejo Ambiental (PAMA)",
+            "Estudio de Riesgo a la Salud y el Ambiente",
+            "Evaluación Ecológica Rápida",
+            "Plan de Manejo de Desechos y Reciclajes",
+            "Plan de Producción Más Limpia (P+L)",
+            "Plan de Paisajismo",
+            "Permisos: descargas de aguas residuales, uso de agua, obra en cauce, indemnización ecológica",
+            "Rescate de fauna; inventarios de flora, fauna y forestales",
+            "Planes de revegetación y/o reforestación",
+            "Interpretación de monitoreos ambientales",
+            "Cuantificación de huella de carbono"
+          ]
+        },
+        {
+          "tipo": "servicio",
+          "titulo": "2) Seguridad y Salud Ocupacional",
+          "servicioFormulario": "Seguridad y Salud Ocupacional",
+          "whatsappTexto": "Hola DATAR, me interesa Seguridad y Salud Ocupacional. ¿Podemos coordinar una reunión?",
+          "subservicios": [
+            "Plan de Prevención de Riesgos",
+            "Plan de Seguridad",
+            "Primeros auxilios",
+            "Capacitaciones en seguridad y salud ocupacional",
+            "Interpretación de monitoreos ocupacionales (audiometría, espirometría)"
+          ]
+        },
+        {
+          "tipo": "servicio",
+          "titulo": "3) Gestión de Sistemas (ISO)",
+          "servicioFormulario": "Gestión de Sistemas (ISO)",
+          "whatsappTexto": "Hola DATAR, me interesa una auditoría / ISO (Gestión de Sistemas). ¿Podemos coordinar una reunión?",
+          "subservicios": [
+            "Auditorías de Sistema de Gestión de Calidad (ISO)",
+            "Diagnóstico, documentación y acompañamiento para la mejora continua"
+          ]
+        },
+        {
+          "tipo": "servicio",
+          "titulo": "4) Gestión Social",
+          "servicioFormulario": "Gestión Social",
+          "whatsappTexto": "Hola DATAR, me interesa Gestión Social / RSE. ¿Podemos coordinar una reunión?",
+          "subservicios": [
+            "Proyectos sostenibles",
+            "Responsabilidad Social Empresarial (RSE)",
+            "Voluntariado corporativo"
+          ]
+        }
+      ]
+    },
+
+    {
+      "id": "casos",
+      "titulo": "Casos de éxito",
+      "bloques": [
+        { "tipo": "parrafo", "html": "Espacio reservado para mostrar resultados reales por sector: reto, solución y resultado. <em>Los ejemplos a continuación son ilustrativos y se reemplazarán con casos reales una vez el cliente entregue la información.</em>" },
+        { "tipo": "subtitulo", "texto": "Ejemplo — Cumplimiento ambiental" },
+        { "tipo": "lista", "items": [
+          "<strong>Sector:</strong> Construcción",
+          "<strong>Reto:</strong> Obtención de permisos y cumplimiento normativo.",
+          "<strong>Solución:</strong> EIA, gestión de permisos y plan de acción.",
+          "<strong>Resultado:</strong> Aprobaciones logradas y plan de seguimiento implementado."
+        ] },
+        { "tipo": "subtitulo", "texto": "Ejemplo — Auditoría y PAMA" },
+        { "tipo": "lista", "items": [
+          "<strong>Sector:</strong> Industrial",
+          "<strong>Reto:</strong> Hallazgos y brechas de cumplimiento.",
+          "<strong>Solución:</strong> Auditoría ambiental + Programa de Adecuación y Manejo Ambiental.",
+          "<strong>Resultado:</strong> Riesgos mitigados y acciones priorizadas."
+        ] },
+        { "tipo": "subtitulo", "texto": "Ejemplo — Seguridad y salud ocupacional" },
+        { "tipo": "lista", "items": [
+          "<strong>Sector:</strong> Alimenticio",
+          "<strong>Reto:</strong> Prevención de riesgos y controles.",
+          "<strong>Solución:</strong> Plan de seguridad, capacitación y monitoreos.",
+          "<strong>Resultado:</strong> Controles establecidos y seguimiento documentado."
+        ] },
+        { "tipo": "acciones", "items": [
+          { "texto": "Quiero un proyecto similar", "servicio": "Consulta general" }
+        ] }
+      ]
+    },
+
+    {
+      "id": "quienes",
+      "titulo": "Quiénes somos",
+      "bloques": [
+        { "tipo": "parrafo", "html": "<strong>Desde 2015</strong>, DATAR Consulting es una consultora que asesora a empresas y organizaciones para afrontar sus desafíos y metas de forma responsable y eficiente. Contamos con un equipo multidisciplinario de consultores y técnicos profesionales, expertos en educación, salud, ambiente y tecnología, con conocimiento profundo de distintos sectores y proyectos. Ofrecemos servicios ambientales de calidad y en cumplimiento de la legislación vigente." },
+        { "tipo": "subtitulo", "texto": "Visión" },
+        { "tipo": "parrafo", "html": "Brindar servicios de consultoría y formación de alta calidad a los clientes que aspiran a optimizar sus organizaciones mejorando su competitividad empresarial, desde la perspectiva de mejora continua, innovación y calidad en la gestión." },
+        { "tipo": "subtitulo", "texto": "Misión" },
+        { "tipo": "parrafo", "html": "Comprometidos con la gestión ambiental del país, involucrando la protección de los recursos naturales y el medio ambiente, integrada a la salud y seguridad laboral, en cumplimiento de las leyes ambientales existentes." },
+        { "tipo": "subtitulo", "texto": "Nuestros valores" },
+        { "tipo": "lista", "items": [
+          "<strong>Garantía de calidad:</strong> captar y satisfacer las expectativas del cliente con atención personalizada.",
+          "<strong>Actitud positiva:</strong> compromiso ambicioso ante la incertidumbre y los desafíos del negocio.",
+          "<strong>Liderazgo:</strong> compromiso con el desarrollo y la motivación de las personas, desde la integridad.",
+          "<strong>Ética profesional:</strong> reconocer los derechos de los individuos y valorar a los demás.",
+          "<strong>Innovación y creatividad:</strong> generación y desarrollo de ideas que aporten valor diferencial.",
+          "<strong>Orientación a resultados:</strong> asumir la responsabilidad por los objetivos de la organización."
+        ] },
+        { "tipo": "subtitulo", "texto": "Equipo profesional" },
+        { "tipo": "parrafo", "html": "Profesionales con más de 10 años de experiencia:" },
+        { "tipo": "lista-alt", "items": [
+          "Auditores y consultores ambientales",
+          "Ingenieros ambientales",
+          "Profesionales de seguridad y salud ocupacional",
+          "Ingenieros forestales",
+          "Biólogos (botánicos, zoólogos)",
+          "Sociólogos",
+          "Arqueólogos",
+          "Topógrafos",
+          "Hidrólogos"
+        ] },
+        { "tipo": "acciones", "items": [
+          { "texto": "Conversemos", "href": "#contacto", "primary": true }
+        ] }
+      ]
+    },
+
+    {
+      "id": "clientes",
+      "titulo": "Clientes",
+      "bloques": [
+        { "tipo": "parrafo", "html": "Espacio reservado para el mural de logos de clientes. <em>Se incorporará cuando el cliente entregue los logos y la autorización correspondiente.</em>" },
+        { "tipo": "subtitulo", "texto": "Tipos de clientes" },
+        { "tipo": "lista-alt", "items": [
+          "Empresas industriales y alimenticias",
+          "Constructoras y proyectos de infraestructura",
+          "Empresas del sector marítimo",
+          "Generación eléctrica",
+          "Organizaciones de conservación biológica"
+        ] },
+        { "tipo": "acciones", "items": [
+          { "texto": "Ver cómo podemos ayudarte", "servicio": "Consulta general" }
+        ] }
+      ]
+    }
+  ],
+
+  "contacto": {
+    "titulo": "Contacto",
+    "intro": "Cuéntanos qué necesitas y te respondemos a la brevedad. Si llegas desde un servicio, el formulario lo dejará preseleccionado.",
+    "infoTitulo": "Información de contacto",
+    "toast": "Tu información fue enviada, pronto nos ponemos en contacto.",
+    "formulario": {
+      "asunto": "Nuevo contacto desde el sitio web - DATAR Consulting",
+      "servicios": [
+        "Consulta general",
+        "Gestión Ambiental",
+        "Seguridad y Salud Ocupacional",
+        "Gestión de Sistemas (ISO)",
+        "Gestión Social"
+      ],
+      "campos": {
+        "nombre":   { "label": "Nombre",   "placeholder": "Tu nombre" },
+        "email":    { "label": "Email",    "placeholder": "tucorreo@empresa.com" },
+        "telefono": { "label": "Teléfono", "placeholder": "+507 ____-____" },
+        "servicio": { "label": "Servicio" },
+        "mensaje":  { "label": "Mensaje",  "placeholder": "Describe brevemente tu necesidad" }
+      },
+      "botones": { "enviar": "Enviar", "limpiar": "Limpiar" },
+      "verificacionPendiente": "Completa la verificación de seguridad para enviar.",
+      "mensajePreseleccion": "Hola DATAR, me interesa el servicio de {servicio}. ¿Podemos coordinar una reunión?"
+    }
+  },
+
+  "footer": "&copy; DATAR Consulting. Todos los derechos reservados.",
+
+  "ui": {
+    "verSubservicios": "Ver subservicios",
+    "iconWhatsapp": "WhatsApp",
+    "iconSitioWeb": "Sitio web",
+    "infoLabels": {
+      "telefono": "Teléfono / WhatsApp:",
+      "email": "Email:",
+      "sitioWeb": "Sitio web:",
+      "direccion": "Dirección:"
+    }
+  }
+}

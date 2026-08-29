@@ -2,7 +2,7 @@
 send.config.php
 
 # Datos en runtime del servidor (límite de peticiones, logs, etc.)
-data/
+/data/
 error_log
 *.log
 

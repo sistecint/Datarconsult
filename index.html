@@ -1,7 +1,10 @@
 <!DOCTYPE HTML>
 <!--
 	Base: Dimension by HTML5 UP (html5up.net | @ajlkn) — CCA 3.0
-	Adaptación One Page para DATAR Consulting
+	Adaptación One Page para DATAR Consulting.
+
+	El contenido (todos los textos y las opciones del formulario) vive en
+	assets/data/contenido.json y lo pinta assets/js/render.js.
 -->
 <html lang="es">
 	<head>
@@ -9,6 +12,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<meta name="description" content="DATAR Consulting: consultoría ambiental, seguridad y salud ocupacional, gestión de sistemas (ISO) y gestión social. Cumplimiento, mejora continua y sostenibilidad para tu organización." />
+		<meta name="turnstile-sitekey" content="0x4AAAAAAEhYKutOBm9miRNE" />
 		<link rel="icon" href="images/logo.png" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
@@ -24,345 +28,19 @@
 							<img src="images/logo.png" alt="DATAR Consulting" />
 						</div>
 						<div class="content">
-							<div class="inner">
-								<h1>DATAR Consulting</h1>
-								<p>
-									Descubre cómo innovar para aportar valor a tu organización.<br />
-									Explora nuevas ideas. Consigue <strong>resultados tangibles</strong>.
-								</p>
-								<ul class="actions">
-									<li><a href="#servicios" class="button primary">Ver servicios</a></li>
-									<li><a href="#contacto" class="button">Agendar / Cotizar</a></li>
-								</ul>
-							</div>
+							<div class="inner" id="header-inner"></div>
 						</div>
 						<nav>
-							<ul>
-								<li><a href="#inicio">Inicio</a></li>
-								<li><a href="#servicios">Servicios</a></li>
-								<li><a href="#casos">Casos de éxito</a></li>
-								<li><a href="#quienes">Quiénes somos</a></li>
-								<li><a href="#clientes">Clientes</a></li>
-								<li><a href="#contacto">Contacto</a></li>
-							</ul>
+							<ul id="nav-list"></ul>
 						</nav>
 					</header>
 
-				<!-- Main -->
-					<div id="main">
-
-						<!-- Inicio -->
-							<article id="inicio">
-								<h2 class="major">Inicio</h2>
-
-								<p>
-									En <strong>DATAR Consulting</strong> asesoramos a empresas y organizaciones sobre cómo
-									afrontar sus desafíos y metas de manera responsable y eficiente, para lograr un
-									impacto económico, social y ambiental sostenible.
-								</p>
-
-								<h3>¿En qué te apoyamos?</h3>
-								<ul>
-									<li>Cumplimiento normativo ambiental, permisos y trámites.</li>
-									<li>Diagnósticos, auditorías, planes de acción y seguimiento.</li>
-									<li>Seguridad y salud ocupacional, y sistemas de gestión (ISO).</li>
-									<li>Proyectos sostenibles y relacionamiento con comunidades.</li>
-								</ul>
-
-								<h3>Sectores atendidos</h3>
-								<ul class="alt">
-									<li>Industrial</li>
-									<li>Alimenticio</li>
-									<li>Construcción</li>
-									<li>Generación eléctrica</li>
-									<li>Área marítima</li>
-									<li>Conservación biológica</li>
-								</ul>
-
-								<ul class="actions">
-									<li><a href="#servicios" class="button primary">Explorar servicios</a></li>
-									<li><a class="button js-contact-service" data-service="Consulta general" href="#contacto">Tengo un proyecto</a></li>
-								</ul>
-							</article>
-
-						<!-- Servicios -->
-							<article id="servicios">
-								<h2 class="major">Servicios</h2>
-
-								<p>
-									Cuatro áreas principales de trabajo. En cada una puedes contactarnos por
-									<strong>WhatsApp</strong> o dejar tus datos en el <strong>formulario</strong>
-									con el servicio preseleccionado.
-								</p>
-
-								<hr />
-
-								<section>
-									<h3>1) Gestión Ambiental</h3>
-									<details>
-										<summary>Ver subservicios</summary>
-										<ul>
-											<li>Asesorías ambientales</li>
-											<li>Estudios de Impacto Ambiental (EIA)</li>
-											<li>Estudio de Viabilidad Ambiental</li>
-											<li>Planes de Manejo Ambiental</li>
-											<li>Planes y desarrollo de Auditorías Ambientales (obligatorias)</li>
-											<li>Programas de Adecuación y Manejo Ambiental (PAMA)</li>
-											<li>Estudio de Riesgo a la Salud y el Ambiente</li>
-											<li>Evaluación Ecológica Rápida</li>
-											<li>Plan de Manejo de Desechos y Reciclajes</li>
-											<li>Plan de Producción Más Limpia (P+L)</li>
-											<li>Plan de Paisajismo</li>
-											<li>Permisos: descargas de aguas residuales, uso de agua, obra en cauce, indemnización ecológica</li>
-											<li>Rescate de fauna; inventarios de flora, fauna y forestales</li>
-											<li>Planes de revegetación y/o reforestación</li>
-											<li>Interpretación de monitoreos ambientales</li>
-											<li>Cuantificación de huella de carbono</li>
-										</ul>
-									</details>
-									<ul class="actions">
-										<li><a class="button primary icon brands fa-whatsapp" target="_blank" rel="noopener" href="https://wa.me/50766015038?text=Hola%20DATAR%2C%20me%20interesa%20Gesti%C3%B3n%20Ambiental.%20%C2%BFPodemos%20coordinar%20una%20reuni%C3%B3n%3F">WhatsApp</a></li>
-										<li><a class="button js-contact-service" data-service="Gestión Ambiental" href="#contacto">Formulario</a></li>
-									</ul>
-								</section>
-
-								<section>
-									<h3>2) Seguridad y Salud Ocupacional</h3>
-									<details>
-										<summary>Ver subservicios</summary>
-										<ul>
-											<li>Plan de Prevención de Riesgos</li>
-											<li>Plan de Seguridad</li>
-											<li>Primeros auxilios</li>
-											<li>Capacitaciones en seguridad y salud ocupacional</li>
-											<li>Interpretación de monitoreos ocupacionales (audiometría, espirometría)</li>
-										</ul>
-									</details>
-									<ul class="actions">
-										<li><a class="button primary icon brands fa-whatsapp" target="_blank" rel="noopener" href="https://wa.me/50766015038?text=Hola%20DATAR%2C%20me%20interesa%20Seguridad%20y%20Salud%20Ocupacional.%20%C2%BFPodemos%20coordinar%20una%20reuni%C3%B3n%3F">WhatsApp</a></li>
-										<li><a class="button js-contact-service" data-service="Seguridad y Salud Ocupacional" href="#contacto">Formulario</a></li>
-									</ul>
-								</section>
-
-								<section>
-									<h3>3) Gestión de Sistemas (ISO)</h3>
-									<details>
-										<summary>Ver subservicios</summary>
-										<ul>
-											<li>Auditorías de Sistema de Gestión de Calidad (ISO)</li>
-											<li>Diagnóstico, documentación y acompañamiento para la mejora continua</li>
-										</ul>
-									</details>
-									<ul class="actions">
-										<li><a class="button primary icon brands fa-whatsapp" target="_blank" rel="noopener" href="https://wa.me/50766015038?text=Hola%20DATAR%2C%20me%20interesa%20una%20auditor%C3%ADa%20%2F%20ISO%20(Gesti%C3%B3n%20de%20Sistemas).%20%C2%BFPodemos%20coordinar%20una%20reuni%C3%B3n%3F">WhatsApp</a></li>
-										<li><a class="button js-contact-service" data-service="Gestión de Sistemas (ISO)" href="#contacto">Formulario</a></li>
-									</ul>
-								</section>
-
-								<section>
-									<h3>4) Gestión Social</h3>
-									<details>
-										<summary>Ver subservicios</summary>
-										<ul>
-											<li>Proyectos sostenibles</li>
-											<li>Responsabilidad Social Empresarial (RSE)</li>
-											<li>Voluntariado corporativo</li>
-										</ul>
-									</details>
-									<ul class="actions">
-										<li><a class="button primary icon brands fa-whatsapp" target="_blank" rel="noopener" href="https://wa.me/50766015038?text=Hola%20DATAR%2C%20me%20interesa%20Gesti%C3%B3n%20Social%20%2F%20RSE.%20%C2%BFPodemos%20coordinar%20una%20reuni%C3%B3n%3F">WhatsApp</a></li>
-										<li><a class="button js-contact-service" data-service="Gestión Social" href="#contacto">Formulario</a></li>
-									</ul>
-								</section>
-							</article>
-
-						<!-- Casos -->
-							<article id="casos">
-								<h2 class="major">Casos de éxito</h2>
-
-								<p>
-									Espacio reservado para mostrar resultados reales por sector: reto, solución y
-									resultado. <em>Los ejemplos a continuación son ilustrativos y se reemplazarán
-									con casos reales una vez el cliente entregue la información.</em>
-								</p>
-
-								<h3>Ejemplo — Cumplimiento ambiental</h3>
-								<ul>
-									<li><strong>Sector:</strong> Construcción</li>
-									<li><strong>Reto:</strong> Obtención de permisos y cumplimiento normativo.</li>
-									<li><strong>Solución:</strong> EIA, gestión de permisos y plan de acción.</li>
-									<li><strong>Resultado:</strong> Aprobaciones logradas y plan de seguimiento implementado.</li>
-								</ul>
-
-								<h3>Ejemplo — Auditoría y PAMA</h3>
-								<ul>
-									<li><strong>Sector:</strong> Industrial</li>
-									<li><strong>Reto:</strong> Hallazgos y brechas de cumplimiento.</li>
-									<li><strong>Solución:</strong> Auditoría ambiental + Programa de Adecuación y Manejo Ambiental.</li>
-									<li><strong>Resultado:</strong> Riesgos mitigados y acciones priorizadas.</li>
-								</ul>
-
-								<h3>Ejemplo — Seguridad y salud ocupacional</h3>
-								<ul>
-									<li><strong>Sector:</strong> Alimenticio</li>
-									<li><strong>Reto:</strong> Prevención de riesgos y controles.</li>
-									<li><strong>Solución:</strong> Plan de seguridad, capacitación y monitoreos.</li>
-									<li><strong>Resultado:</strong> Controles establecidos y seguimiento documentado.</li>
-								</ul>
-
-								<ul class="actions">
-									<li><a class="button js-contact-service" data-service="Consulta general" href="#contacto">Quiero un proyecto similar</a></li>
-								</ul>
-							</article>
-
-						<!-- Quiénes -->
-							<article id="quienes">
-								<h2 class="major">Quiénes somos</h2>
-
-								<p>
-									<strong>Desde 2015</strong>, DATAR Consulting es una consultora que asesora a
-									empresas y organizaciones para afrontar sus desafíos y metas de forma responsable
-									y eficiente. Contamos con un equipo multidisciplinario de consultores y técnicos
-									profesionales, expertos en educación, salud, ambiente y tecnología, con
-									conocimiento profundo de distintos sectores y proyectos. Ofrecemos servicios
-									ambientales de calidad y en cumplimiento de la legislación vigente.
-								</p>
-
-								<h3>Visión</h3>
-								<p>
-									Brindar servicios de consultoría y formación de alta calidad a los clientes que
-									aspiran a optimizar sus organizaciones mejorando su competitividad empresarial,
-									desde la perspectiva de mejora continua, innovación y calidad en la gestión.
-								</p>
-
-								<h3>Misión</h3>
-								<p>
-									Comprometidos con la gestión ambiental del país, involucrando la protección de los
-									recursos naturales y el medio ambiente, integrada a la salud y seguridad laboral,
-									en cumplimiento de las leyes ambientales existentes.
-								</p>
-
-								<h3>Nuestros valores</h3>
-								<ul>
-									<li><strong>Garantía de calidad:</strong> captar y satisfacer las expectativas del cliente con atención personalizada.</li>
-									<li><strong>Actitud positiva:</strong> compromiso ambicioso ante la incertidumbre y los desafíos del negocio.</li>
-									<li><strong>Liderazgo:</strong> compromiso con el desarrollo y la motivación de las personas, desde la integridad.</li>
-									<li><strong>Ética profesional:</strong> reconocer los derechos de los individuos y valorar a los demás.</li>
-									<li><strong>Innovación y creatividad:</strong> generación y desarrollo de ideas que aporten valor diferencial.</li>
-									<li><strong>Orientación a resultados:</strong> asumir la responsabilidad por los objetivos de la organización.</li>
-								</ul>
-
-								<h3>Equipo profesional</h3>
-								<p>Profesionales con más de 10 años de experiencia:</p>
-								<ul class="alt">
-									<li>Auditores y consultores ambientales</li>
-									<li>Ingenieros ambientales</li>
-									<li>Profesionales de seguridad y salud ocupacional</li>
-									<li>Ingenieros forestales</li>
-									<li>Biólogos (botánicos, zoólogos)</li>
-									<li>Sociólogos</li>
-									<li>Arqueólogos</li>
-									<li>Topógrafos</li>
-									<li>Hidrólogos</li>
-								</ul>
-
-								<ul class="actions">
-									<li><a href="#contacto" class="button primary">Conversemos</a></li>
-								</ul>
-							</article>
-
-						<!-- Clientes -->
-							<article id="clientes">
-								<h2 class="major">Clientes</h2>
-
-								<p>
-									Espacio reservado para el mural de logos de clientes. <em>Se incorporará cuando el
-									cliente entregue los logos y la autorización correspondiente.</em>
-								</p>
-
-								<h3>Tipos de clientes</h3>
-								<ul class="alt">
-									<li>Empresas industriales y alimenticias</li>
-									<li>Constructoras y proyectos de infraestructura</li>
-									<li>Empresas del sector marítimo</li>
-									<li>Generación eléctrica</li>
-									<li>Organizaciones de conservación biológica</li>
-								</ul>
-
-								<ul class="actions">
-									<li><a class="button js-contact-service" data-service="Consulta general" href="#contacto">Ver cómo podemos ayudarte</a></li>
-								</ul>
-							</article>
-
-						<!-- Contacto -->
-							<article id="contacto">
-								<h2 class="major">Contacto</h2>
-
-								<p>
-									Cuéntanos qué necesitas y te respondemos a la brevedad. Si llegas desde un
-									servicio, el formulario lo dejará preseleccionado.
-								</p>
-
-								<form id="contact-form" method="POST" action="send.php" data-turnstile-sitekey="0x4AAAAAAEhYKutOBm9miRNE">
-									<input type="hidden" name="_subject" value="Nuevo contacto desde el sitio web - DATAR Consulting" />
-									<input type="hidden" name="_ts" id="_ts" value="" />
-									<input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" />
-									<div class="fields">
-										<div class="field half">
-											<label for="name">Nombre</label>
-											<input type="text" name="name" id="name" placeholder="Tu nombre" required />
-										</div>
-										<div class="field half">
-											<label for="email">Email</label>
-											<input type="email" name="email" id="email" placeholder="tucorreo@empresa.com" required />
-										</div>
-										<div class="field half">
-											<label for="phone">Teléfono</label>
-											<input type="text" name="phone" id="phone" placeholder="+507 ____-____" />
-										</div>
-										<div class="field half">
-											<label for="service">Servicio</label>
-											<select name="service" id="service">
-												<option value="Consulta general">Consulta general</option>
-												<option value="Gestión Ambiental">Gestión Ambiental</option>
-												<option value="Seguridad y Salud Ocupacional">Seguridad y Salud Ocupacional</option>
-												<option value="Gestión de Sistemas (ISO)">Gestión de Sistemas (ISO)</option>
-												<option value="Gestión Social">Gestión Social</option>
-											</select>
-										</div>
-										<div class="field">
-											<label for="message">Mensaje</label>
-											<textarea name="message" id="message" rows="5" placeholder="Describe brevemente tu necesidad" required></textarea>
-										</div>
-									</div>
-									<div id="turnstile-slot"></div>
-									<ul class="actions">
-										<li><input type="submit" value="Enviar" class="primary" /></li>
-										<li><input type="reset" value="Limpiar" /></li>
-									</ul>
-								</form>
-
-								<hr />
-
-								<h3>Información de contacto</h3>
-								<ul class="alt">
-									<li><strong>Teléfono / WhatsApp:</strong> (507) 6601-5038</li>
-									<li><strong>Email:</strong> info@datarconsult.com</li>
-									<li><strong>Sitio web:</strong> datarconsult.com</li>
-									<li><strong>Dirección:</strong> Las Cumbres, Panamá (sede principal)</li>
-								</ul>
-
-								<ul class="icons">
-									<li><a target="_blank" rel="noopener" href="https://wa.me/50766015038" class="icon brands fa-whatsapp"><span class="label">WhatsApp</span></a></li>
-									<li><a target="_blank" rel="noopener" href="https://datarconsult.com/" class="icon solid fa-globe"><span class="label">Sitio web</span></a></li>
-								</ul>
-							</article>
-
-					</div>
+				<!-- Main (los artículos los pinta render.js) -->
+					<div id="main"></div>
 
 				<!-- Footer -->
 					<footer id="footer">
-						<p class="copyright">&copy; DATAR Consulting. Todos los derechos reservados.</p>
+						<p class="copyright" id="footer-text"></p>
 					</footer>
 
 			</div>
@@ -371,20 +49,32 @@
 			<div id="bg"></div>
 
 		<!-- Floating WhatsApp -->
-			<a class="button primary icon brands fa-whatsapp whatsapp-float" target="_blank" rel="noopener" href="https://wa.me/50766015038?text=Hola%20DATAR%2C%20quisiera%20una%20asesor%C3%ADa.%20%C2%BFPodemos%20coordinar%20una%20reuni%C3%B3n%3F">WhatsApp</a>
+			<a class="button primary icon brands fa-whatsapp whatsapp-float" id="whatsapp-float" target="_blank" rel="noopener" href="#">WhatsApp</a>
 
 		<!-- Mensaje flotante de confirmación del formulario -->
 			<div id="form-toast" class="form-toast" role="status" aria-live="polite" hidden>
-				<div class="form-toast__box">Tu información fue enviada, pronto nos ponemos en contacto.</div>
+				<div class="form-toast__box"></div>
 			</div>
+
+		<!-- Sin JavaScript -->
+			<noscript>
+				<div style="max-width:40rem;margin:3rem auto;padding:0 1.5rem;color:#fff;font-family:sans-serif">
+					<h1>DATAR Consulting</h1>
+					<p>Este sitio necesita JavaScript para mostrarse. Puedes contactarnos directamente:</p>
+					<ul>
+						<li>WhatsApp / Tel: (507) 6601-5038</li>
+						<li>Email: info@datarconsult.com</li>
+						<li>Web: datarconsult.com</li>
+					</ul>
+				</div>
+			</noscript>
 
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-			<script src="assets/js/contact.js"></script>
+			<script src="assets/js/render.js"></script>
 
 	</body>
 </html>
