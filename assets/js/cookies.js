@@ -35,10 +35,9 @@
 	/* ------------------- Modal de política de cookies -------------- */
 
 	function abrirPolitica() {
-		var m = document.getElementById('cookie-modal');
-		if (m) { m.hidden = false; return; }
+		if (document.getElementById('cookie-modal')) return;
 
-		m = document.createElement('div');
+		var m = document.createElement('div');
 		m.id = 'cookie-modal';
 		m.className = 'cookie-modal';
 		m.setAttribute('role', 'dialog');
@@ -51,12 +50,17 @@
 			+ '</div>';
 		document.body.appendChild(m);
 
-		function cerrar() { m.hidden = true; }
+		function cerrar() {
+			document.removeEventListener('keyup', onKey);
+			if (m.parentNode) m.parentNode.removeChild(m);
+		}
+		function onKey(e) {
+			if (e.key === 'Escape' || e.keyCode === 27) cerrar();
+		}
+
 		m.addEventListener('click', function (e) { if (e.target === m) cerrar(); });
 		m.querySelector('.cookie-modal__close').addEventListener('click', cerrar);
-		document.addEventListener('keyup', function (e) {
-			if (e.key === 'Escape' && !m.hidden) cerrar();
-		});
+		document.addEventListener('keyup', onKey);
 	}
 
 	/* --------------------------- Banner --------------------------- */
