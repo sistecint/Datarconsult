@@ -1,0 +1,6 @@
+# Credenciales reales del envío de correo (NO subir al repositorio)
+send.config.php
+
+# Sistema
+.DS_Store
+Thumbs.db
