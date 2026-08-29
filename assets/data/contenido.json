@@ -244,6 +244,16 @@
 
   "footer": "&copy; DATAR Consulting. Todos los derechos reservados.",
 
+  "cookies": {
+    "texto": "Usamos cookies necesarias para el funcionamiento del sitio y, solo si lo aceptas, cookies de analítica para mejorar tu experiencia.",
+    "aceptar": "Aceptar",
+    "rechazar": "Rechazar",
+    "masInfo": "Más información",
+    "politicaTitulo": "Política de cookies",
+    "politica": "<p>En <strong>datarconsult.com</strong> utilizamos:</p><ul><li><strong>Cookies técnicas necesarias:</strong> permiten el funcionamiento básico del sitio y la protección frente a bots (Cloudflare). No requieren consentimiento y no se pueden desactivar.</li><li><strong>Cookies de analítica (opcionales):</strong> nos ayudan a entender cómo se usa el sitio para mejorarlo. Solo se activan si pulsas <em>Aceptar</em>.</li></ul><p>Puedes cambiar tu decisión en cualquier momento borrando los datos de este sitio en tu navegador. Para consultas sobre privacidad escríbenos a <a href=\"mailto:info@datarconsult.com\">info@datarconsult.com</a>.</p>",
+    "cerrar": "Cerrar"
+  },
+
   "ui": {
     "verSubservicios": "Ver subservicios",
     "iconWhatsapp": "WhatsApp",

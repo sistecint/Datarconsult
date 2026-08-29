@@ -235,6 +235,9 @@
 			if (location.hash && location.hash.length > 1 && window.jQuery) {
 				window.jQuery(window).trigger('hashchange');
 			}
+			// El aviso de cookies se carga al final, ya sin "is-preload"
+			// (así su animación de entrada sí se ve).
+			return loadScript('assets/js/cookies.js');
 		})
 		.catch(fallo);
 })();
