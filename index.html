@@ -465,15 +465,21 @@
 								body: new FormData(form),
 								headers: { 'Accept': 'application/json', 'X-Requested-With': 'XMLHttpRequest' }
 							}).then(function (res) {
-								return res.json().catch(function () { return { ok: res.ok }; });
-							}).then(function (data) {
-								if (data && data.ok) {
+								return res.text().then(function (txt) {
+									var data;
+									try { data = JSON.parse(txt); } catch (err) { data = { ok: res.ok }; }
+									return { status: res.status, body: txt, data: data };
+								});
+							}).then(function (r) {
+								if (r.data && r.data.ok) {
 									showToast('Tu información fue enviada, pronto nos ponemos en contacto.');
 								} else {
+									console.error('send.php no confirmó el envío:', r.status, r.body);
 									openMailClient();
 									showToast('Tu información fue enviada, pronto nos ponemos en contacto.');
 								}
-							}).catch(function () {
+							}).catch(function (err) {
+								console.error('Error al enviar el formulario:', err);
 								openMailClient();
 								showToast('Tu información fue enviada, pronto nos ponemos en contacto.');
 							});
