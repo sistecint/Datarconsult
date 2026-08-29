@@ -1,6 +1,9 @@
 # Credenciales reales del envío de correo (NO subir al repositorio)
 send.config.php
 
+# Datos en runtime del servidor (límite de peticiones, etc.)
+data/
+
 # Sistema
 .DS_Store
 Thumbs.db

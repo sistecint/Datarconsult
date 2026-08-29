@@ -37,4 +37,29 @@ return array(
 
     // true = escribe el diálogo SMTP en el log de PHP (solo para depurar).
     'debug'       => false,
+
+    /* --------------------------------------------------------------
+     * SEGURIDAD (opcional)
+     * ------------------------------------------------------------ */
+
+    // Token para poder abrir el diagnóstico:  send.php?diag=EL_TOKEN
+    // Si se deja vacío, el diagnóstico queda deshabilitado (responde 404).
+    'diag_token'  => '',
+
+    // Cloudflare Turnstile (CAPTCHA invisible y gratuito).
+    // Crea un widget en https://dash.cloudflare.com/  -> Turnstile
+    // y pega aquí la "Secret Key". La "Site Key" va en index.html
+    // (atributo data-turnstile-sitekey del <form>).
+    'turnstile_secret' => '',
+
+    // Ajustes finos del anti-abuso (opcional; estos son los valores por defecto).
+    'security' => array(
+        'min_seconds'    => 3,    // segundos mínimos para llenar el formulario
+        'max_per_ip'     => 5,    // envíos por IP en la ventana
+        'window_seconds' => 600,  // ventana del límite por IP (10 min)
+        'global_per_min' => 30,   // tope de envíos por minuto de todo el sitio
+        'max_message'    => 5000, // caracteres máximos del mensaje
+        'max_links'      => 3,    // enlaces máximos permitidos en el texto
+        'allowed_hosts'  => array('datarconsult.com', 'www.datarconsult.com'),
+    ),
 );
