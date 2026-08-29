@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Documentación · Sitio DATAR Consulting</title>
+<meta name="description" content="Documentación de diseño, arquitectura técnica y seguridad del sitio web de DATAR Consulting." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,560;9..144,620&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;450;600&display=swap" />
+<style>
+	:root {
+		--ground: #f5f7f3;
+		--surface: #ffffff;
+		--surface-2: #ecf0e9;
+		--ink: #1b2620;
+		--ink-soft: #515c55;
+		--ink-faint: #838d86;
+		--rule: #dbe2d9;
+		--accent: #2e7d4f;
+		--accent-ink: #1d5636;
+		--accent-soft: #e3efe6;
+		--flag: #9a6316;
+		--flag-soft: #f5ecdb;
+		--code-bg: #eef1eb;
+		--shadow: 0 1px 2px rgba(27, 38, 32, 0.04), 0 8px 24px -12px rgba(27, 38, 32, 0.12);
+		--maxw: 52rem;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		:root:not([data-theme="light"]) {
+			--ground: #11150f;
+			--surface: #181e16;
+			--surface-2: #202719;
+			--ink: #e6ece4;
+			--ink-soft: #a7b1a8;
+			--ink-faint: #767f77;
+			--rule: #2b3327;
+			--accent: #5cb87f;
+			--accent-ink: #8ed3a7;
+			--accent-soft: #1c2a20;
+			--flag: #d29a53;
+			--flag-soft: #2a2416;
+			--code-bg: #1d241b;
+			--shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 30px -14px rgba(0, 0, 0, 0.6);
+		}
+	}
+
+	:root[data-theme="dark"] {
+		--ground: #11150f;
+		--surface: #181e16;
+		--surface-2: #202719;
+		--ink: #e6ece4;
+		--ink-soft: #a7b1a8;
+		--ink-faint: #767f77;
+		--rule: #2b3327;
+		--accent: #5cb87f;
+		--accent-ink: #8ed3a7;
+		--accent-soft: #1c2a20;
+		--flag: #d29a53;
+		--flag-soft: #2a2416;
+		--code-bg: #1d241b;
+		--shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 12px 30px -14px rgba(0, 0, 0, 0.6);
+	}
+
+	* { box-sizing: border-box; }
+
+	html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+	@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+	body {
+		margin: 0;
+		background: var(--ground);
+		color: var(--ink);
+		font-family: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+		font-weight: 400;
+		font-size: 1rem;
+		line-height: 1.65;
+		-webkit-font-smoothing: antialiased;
+		text-rendering: optimizeLegibility;
+	}
+
+	.wrap {
+		max-width: var(--maxw);
+		margin: 0 auto;
+		padding: 0 1.5rem 6rem;
+	}
+
+	/* ---------- Header ---------- */
+
+	.masthead {
+		border-bottom: 1px solid var(--rule);
+		background: var(--surface);
+	}
+	.masthead .wrap { padding-top: 3.5rem; padding-bottom: 2.75rem; }
+
+	.eyebrow {
+		font-family: "IBM Plex Mono", ui-monospace, monospace;
+		font-size: 0.72rem;
+		font-weight: 500;
+		letter-spacing: 0.16em;
+		text-transform: uppercase;
+		color: var(--accent-ink);
+	}
+
+	h1 {
+		font-family: "Fraunces", Georgia, serif;
+		font-weight: 560;
+		font-size: clamp(2rem, 5vw, 2.9rem);
+		line-height: 1.08;
+		letter-spacing: -0.01em;
+		margin: 0.7rem 0 0.6rem;
+		text-wrap: balance;
+	}
+
+	.lede {
+		font-size: 1.12rem;
+		color: var(--ink-soft);
+		max-width: 42ch;
+		margin: 0 0 1.75rem;
+	}
+
+	.meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem 1.6rem;
+		font-family: "IBM Plex Mono", ui-monospace, monospace;
+		font-size: 0.78rem;
+		color: var(--ink-faint);
+		padding-top: 1.5rem;
+		border-top: 1px solid var(--rule);
+	}
+	.meta b { color: var(--ink-soft); font-weight: 500; }
+
+	/* ---------- Layout with TOC ---------- */
+
+	.layout { display: block; }
+
+	@media (min-width: 64rem) {
+		.layout {
+			display: grid;
+			grid-template-columns: 1fr minmax(0, var(--maxw)) 1fr;
+			max-width: none;
+			padding: 0;
+		}
+		.layout > .content { grid-column: 2; padding: 0 1.5rem 6rem; }
+		.toc-rail { grid-column: 1; }
+	}
+
+	.toc-rail nav {
+		position: sticky;
+		top: 0;
+		max-height: 100vh;
+		overflow-y: auto;
+		padding: 3rem 1.25rem 2rem 1.75rem;
+		font-size: 0.85rem;
+	}
+	.toc-rail .eyebrow { display: block; margin-bottom: 0.9rem; }
+	.toc-rail ol {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		counter-reset: toc;
+	}
+	.toc-rail li { margin: 0.15rem 0; }
+	.toc-rail a {
+		display: block;
+		padding: 0.28rem 0;
+		color: var(--ink-soft);
+		text-decoration: none;
+		border-left: 2px solid transparent;
+		padding-left: 0.75rem;
+		margin-left: -0.75rem;
+		transition: color 0.15s, border-color 0.15s;
+	}
+	.toc-rail a:hover { color: var(--ink); border-left-color: var(--rule); }
+	.toc-rail a::before {
+		counter-increment: toc;
+		content: counter(toc, decimal-leading-zero) " ";
+		font-family: "IBM Plex Mono", ui-monospace, monospace;
+		font-size: 0.75rem;
+		color: var(--ink-faint);
+	}
+
+	/* mobile toc */
+	.toc-inline {
+		background: var(--surface);
+		border: 1px solid var(--rule);
+		border-radius: 10px;
+		padding: 1.25rem 1.5rem;
+		margin: 2.5rem 0;
+	}
+	.toc-inline ol { margin: 0.5rem 0 0; padding-left: 1.2rem; }
+	.toc-inline li { margin: 0.25rem 0; }
+	.toc-inline a { color: var(--ink-soft); text-decoration: none; }
+	.toc-inline a:hover { color: var(--accent-ink); }
+	@media (min-width: 64rem) { .toc-inline { display: none; } }
+
+	/* ---------- Sections ---------- */
+
+	section { padding-top: 3.75rem; }
+	section > .eyebrow { display: block; margin-bottom: 0.5rem; }
+
+	h2 {
+		font-family: "Fraunces", Georgia, serif;
+		font-weight: 560;
+		font-size: 1.7rem;
+		line-height: 1.15;
+		letter-spacing: -0.005em;
+		margin: 0 0 1.1rem;
+		padding-bottom: 0.6rem;
+		border-bottom: 1px solid var(--rule);
+		text-wrap: balance;
+	}
+
+	h3 {
+		font-family: "IBM Plex Sans", sans-serif;
+		font-weight: 600;
+		font-size: 1.02rem;
+		letter-spacing: 0.005em;
+		margin: 2rem 0 0.6rem;
+	}
+
+	p { margin: 0 0 1rem; max-width: 68ch; }
+	a { color: var(--accent-ink); text-underline-offset: 2px; }
+
+	ul, ol { max-width: 68ch; padding-left: 1.3rem; margin: 0 0 1rem; }
+	li { margin: 0.3rem 0; }
+	li::marker { color: var(--accent); }
+
+	strong { font-weight: 600; }
+
+	code {
+		font-family: "IBM Plex Mono", ui-monospace, monospace;
+		font-size: 0.86em;
+		background: var(--code-bg);
+		padding: 0.12em 0.4em;
+		border-radius: 4px;
+		word-break: break-word;
+	}
+
+	pre {
+		background: var(--code-bg);
+		border: 1px solid var(--rule);
+		border-radius: 10px;
+		padding: 1.1rem 1.25rem;
+		overflow-x: auto;
+		margin: 1.25rem 0 1.5rem;
+		font-size: 0.82rem;
+		line-height: 1.7;
+	}
+	pre code { background: none; padding: 0; font-size: 1em; }
+
+	.note {
+		background: var(--accent-soft);
+		border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+		border-radius: 10px;
+		padding: 1rem 1.25rem;
+		margin: 1.5rem 0;
+		font-size: 0.95rem;
+	}
+	.note.flag {
+		background: var(--flag-soft);
+		border-color: color-mix(in srgb, var(--flag) 35%, transparent);
+	}
+	.note p:last-child { margin-bottom: 0; }
+	.note .eyebrow { color: var(--flag); }
+	.note.flag .eyebrow { color: var(--flag); }
+
+	/* ---------- Tables ---------- */
+
+	.table-scroll { overflow-x: auto; margin: 1.5rem 0; }
+	table {
+		border-collapse: collapse;
+		width: 100%;
+		font-size: 0.9rem;
+		background: var(--surface);
+		border: 1px solid var(--rule);
+		border-radius: 10px;
+		overflow: hidden;
+	}
+	th, td {
+		text-align: left;
+		padding: 0.7rem 0.9rem;
+		border-bottom: 1px solid var(--rule);
+		vertical-align: top;
+	}
+	th {
+		font-family: "IBM Plex Mono", ui-monospace, monospace;
+		font-weight: 500;
+		font-size: 0.72rem;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--ink-faint);
+		background: var(--surface-2);
+	}
+	tbody tr:last-child td { border-bottom: 0; }
+	td code { font-size: 0.8rem; }
+	td:first-child { white-space: nowrap; }
+
+	.pill {
+		display: inline-block;
+		font-family: "IBM Plex Mono", ui-monospace, monospace;
+		font-size: 0.68rem;
+		font-weight: 500;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		padding: 0.15rem 0.5rem;
+		border-radius: 999px;
+		white-space: nowrap;
+	}
+	.pill.on { background: var(--accent-soft); color: var(--accent-ink); }
+	.pill.todo { background: var(--flag-soft); color: var(--flag); }
+
+	/* ---------- Layer stack diagram ---------- */
+
+	.stack {
+		display: flex;
+		flex-direction: column;
+		gap: 3px;
+		margin: 1.75rem 0;
+		border-radius: 12px;
+		overflow: hidden;
+		border: 1px solid var(--rule);
+	}
+	.stack .layer {
+		background: var(--surface);
+		padding: 0.85rem 1.1rem;
+		display: flex;
+		gap: 0.9rem;
+		align-items: baseline;
+	}
+	.stack .layer .n {
+		font-family: "IBM Plex Mono", ui-monospace, monospace;
+		font-size: 0.72rem;
+		color: var(--accent);
+		flex: none;
+		width: 2.5rem;
+	}
+	.stack .layer .t { font-weight: 600; font-size: 0.92rem; flex: none; width: 11rem; }
+	.stack .layer .d { color: var(--ink-soft); font-size: 0.88rem; }
+	@media (max-width: 40rem) {
+		.stack .layer { flex-wrap: wrap; gap: 0.15rem 0.9rem; }
+		.stack .layer .t { width: auto; }
+		.stack .layer .d { flex-basis: 100%; }
+	}
+
+	/* ---------- Footer ---------- */
+
+	.doc-footer {
+		margin-top: 5rem;
+		padding-top: 1.75rem;
+		border-top: 1px solid var(--rule);
+		font-size: 0.85rem;
+		color: var(--ink-faint);
+	}
+
+	/* ---------- Theme toggle ---------- */
+
+	.theme-toggle {
+		position: fixed;
+		top: 1rem;
+		right: 1rem;
+		z-index: 10;
+		font-family: "IBM Plex Mono", ui-monospace, monospace;
+		font-size: 0.7rem;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		background: var(--surface);
+		color: var(--ink-soft);
+		border: 1px solid var(--rule);
+		border-radius: 999px;
+		padding: 0.4rem 0.85rem;
+		cursor: pointer;
+		box-shadow: var(--shadow);
+	}
+	.theme-toggle:hover { color: var(--ink); }
+	.theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+	a:focus-visible, .toc-rail a:focus-visible {
+		outline: 2px solid var(--accent);
+		outline-offset: 2px;
+		border-radius: 3px;
+	}
+
+	@media print {
+		.theme-toggle, .toc-rail, .toc-inline { display: none !important; }
+		body { background: #fff; color: #000; font-size: 10.5pt; }
+		.layout { display: block; }
+		.layout > .content { padding: 0; }
+		section { padding-top: 1.8rem; break-inside: avoid-page; }
+		pre, table, .stack, .note { break-inside: avoid; }
+		a { color: #000; text-decoration: none; }
+	}
+</style>
+</head>
+<body>
+
+<button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar tema">Tema</button>
+
+<header class="masthead">
+	<div class="wrap">
+		<span class="eyebrow">Documentación del proyecto</span>
+		<h1>Sitio web de DATAR Consulting</h1>
+		<p class="lede">Diseño, arquitectura técnica y capas de seguridad del sitio de una página <code>datarconsult.com</code>.</p>
+		<div class="meta">
+			<span><b>Versión</b> 1.0</span>
+			<span><b>Fecha</b> 29 ago 2026</span>
+			<span><b>Preparado por</b> SISTEC</span>
+			<span><b>Cliente</b> DATAR Consulting</span>
+			<span><b>Repositorio</b> github.com/sistecint/Datarconsult</span>
+		</div>
+	</div>
+</header>
+
+<div class="layout">
+
+	<div class="toc-rail" aria-hidden="true">
+		<nav>
+			<span class="eyebrow">Contenido</span>
+			<ol>
+				<li><a href="#resumen">Resumen</a></li>
+				<li><a href="#diseno">Diseño</a></li>
+				<li><a href="#arquitectura">Arquitectura técnica</a></li>
+				<li><a href="#contenido">Contenido editable</a></li>
+				<li><a href="#formulario">Formulario y correo</a></li>
+				<li><a href="#seguridad">Seguridad</a></li>
+				<li><a href="#hosting">Hosting y despliegue</a></li>
+				<li><a href="#mantenimiento">Mantenimiento</a></li>
+				<li><a href="#inventario">Inventario de archivos</a></li>
+			</ol>
+		</nav>
+	</div>
+
+	<div class="content">
+	<main class="wrap">
+
+		<nav class="toc-inline" aria-label="Contenido">
+			<span class="eyebrow">Contenido</span>
+			<ol>
+				<li><a href="#resumen">Resumen</a></li>
+				<li><a href="#diseno">Diseño</a></li>
+				<li><a href="#arquitectura">Arquitectura técnica</a></li>
+				<li><a href="#contenido">Contenido editable</a></li>
+				<li><a href="#formulario">Formulario y correo</a></li>
+				<li><a href="#seguridad">Seguridad</a></li>
+				<li><a href="#hosting">Hosting y despliegue</a></li>
+				<li><a href="#mantenimiento">Mantenimiento</a></li>
+				<li><a href="#inventario">Inventario de archivos</a></li>
+			</ol>
+		</nav>
+
+		<!-- 1 -->
+		<section id="resumen">
+			<span class="eyebrow">01 — Resumen</span>
+			<h2>Resumen del proyecto</h2>
+			<p>
+				DATAR Consulting es una consultora ambiental panameña (seguridad y salud ocupacional,
+				gestión de sistemas ISO y gestión social) activa desde 2015. El encargo fue rediseñar
+				su presencia web como una <strong>landing de una sola página</strong> (One Page) que
+				explique con rapidez qué hace la empresa, muestre sus servicios y facilite el contacto.
+			</p>
+			<p>
+				El sitio se construyó sobre la plantilla <strong>Dimension</strong> de HTML5 UP
+				(licencia CC&nbsp;BY&nbsp;3.0) —secciones que abren como paneles sobre un fondo fijo, con
+				efecto de profundidad— y se adaptó a la estructura definida en la sección 3 de la
+				propuesta. El texto de las secciones proviene del <em>Folleto&nbsp;-&nbsp;Datar&nbsp;Consulting.pdf</em>.
+			</p>
+			<h3>Características principales</h3>
+			<ul>
+				<li>Navegación por anclas con menú fijo: Inicio · Servicios · Casos de éxito · Quiénes somos · Clientes · Contacto.</li>
+				<li>Servicios con subservicios en acordeón y contacto directo (WhatsApp / formulario) por servicio.</li>
+				<li>Formulario de contacto con preselección de servicio, envío sin recargar y mensaje de confirmación.</li>
+				<li>Botón flotante de WhatsApp y aviso de cookies.</li>
+				<li>Diseño responsivo (móvil, tablet y escritorio).</li>
+				<li>Todo el texto del sitio vive en un único archivo JSON editable.</li>
+			</ul>
+			<div class="note flag">
+				<span class="eyebrow">Pendiente de entrega del cliente</span>
+				<p>
+					Las secciones <strong>Casos de éxito</strong> y <strong>Clientes</strong> están
+					construidas con contenido de ejemplo / placeholder. Se completarán cuando el
+					cliente entregue los casos reales y los logos con autorización.
+				</p>
+			</div>
+		</section>
+
+		<!-- 2 -->
+		<section id="diseno">
+			<span class="eyebrow">02 — Diseño</span>
+			<h2>Diseño</h2>
+
+			<h3>Base visual</h3>
+			<p>
+				La plantilla Dimension aporta el patrón de interacción: un fondo a pantalla completa
+				fijo y difuminado, sobre el que cada sección aparece como un panel centrado con una
+				transición de opacidad y desenfoque. Sobre esa base se ajustaron encuadre, logo,
+				formulario y comportamiento.
+			</p>
+
+			<div class="table-scroll">
+				<table>
+					<thead>
+						<tr><th>Elemento</th><th>Definición</th></tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Paleta</td>
+							<td>Heredada de Dimension: fondo oscuro translúcido <code>#1b1f22</code> sobre la imagen, texto blanco, acento en botones blancos. Verde institucional presente en el logo y la fotografía de fondo.</td>
+						</tr>
+						<tr>
+							<td>Tipografía</td>
+							<td><code>Source Sans Pro</code> (Google Fonts) para todo el sitio, con mayúsculas y espaciado de letra amplio en títulos y etiquetas.</td>
+						</tr>
+						<tr>
+							<td>Logo</td>
+							<td><code>images/logo.png</code> — isotipo «D&amp;C» (árbol) a color sobre fondo transparente, presentado dentro de un badge circular blanco en el encabezado. Optimizado a 420&nbsp;px.</td>
+						</tr>
+						<tr>
+							<td>Fondo</td>
+							<td><code>images/bg_final.jpg</code> — imagen generada (planta de energías renovables con señalización ambiental y cartel de la empresa). Optimizada de PNG 2048&nbsp;px / 10&nbsp;MB a JPEG 1920&nbsp;px / ~760&nbsp;KB, encuadre <code>cover</code> centrado.</td>
+						</tr>
+						<tr>
+							<td>Iconografía</td>
+							<td>Font Awesome (incluido en la plantilla) para WhatsApp, correo y web.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<h3>Estructura One Page</h3>
+			<p>
+				Seis secciones, cada una como panel. El menú superior es fijo y navega por anclas
+				(<code>#inicio</code>, <code>#servicios</code>…). Los enlaces directos a una sección
+				(por ejemplo <code>datarconsult.com/#servicios</code>) abren ese panel al cargar.
+			</p>
+			<ul>
+				<li><strong>Inicio</strong> — propuesta de valor, «¿en qué te apoyamos?» y sectores atendidos.</li>
+				<li><strong>Servicios</strong> — cuatro áreas (Gestión Ambiental, Seguridad y Salud Ocupacional, Gestión de Sistemas ISO, Gestión Social), cada una con sus subservicios en acordeón y botones de WhatsApp y formulario.</li>
+				<li><strong>Casos de éxito</strong> — plantilla reto / solución / resultado (ejemplos ilustrativos).</li>
+				<li><strong>Quiénes somos</strong> — desde 2015, visión, misión, valores y equipo profesional.</li>
+				<li><strong>Clientes</strong> — placeholder para el mural de logos y tipos de cliente.</li>
+				<li><strong>Contacto</strong> — formulario con preselección de servicio + datos de contacto.</li>
+			</ul>
+
+			<h3>Interacciones</h3>
+			<ul>
+				<li>Apertura de paneles con desenfoque del fondo; cierre con la «✕», tecla <kbd>Esc</kbd> o clic fuera.</li>
+				<li>Acordeones <code>&lt;details&gt;</code> para los subservicios.</li>
+				<li>Botón flotante de WhatsApp con mensaje pre-redactado.</li>
+				<li>Al pulsar «Formulario» en un servicio, el formulario abre con ese servicio ya seleccionado y un mensaje sugerido.</li>
+				<li>Al enviar el formulario aparece un aviso flotante centrado y la página vuelve al inicio.</li>
+			</ul>
+		</section>
+
+		<!-- 3 -->
+		<section id="arquitectura">
+			<span class="eyebrow">03 — Arquitectura técnica</span>
+			<h2>Arquitectura técnica</h2>
+			<p>
+				Sitio estático servido con un único procesamiento en servidor (<code>send.php</code>)
+				para el formulario. Sin framework: HTML, CSS y JavaScript. jQuery viene incluido con
+				la plantilla Dimension.
+			</p>
+
+			<h3>Flujo de carga</h3>
+			<p>
+				<code>index.html</code> es solo un <strong>esqueleto</strong> (contenedores vacíos y un
+				<code>&lt;noscript&gt;</code> con datos de contacto básicos). El contenido lo pinta
+				JavaScript a partir del JSON:
+			</p>
+			<pre><code>index.html
+  └─ carga jquery, browser, breakpoints, util  (plantilla)
+  └─ carga assets/js/render.js
+       1. fetch assets/data/contenido.json
+       2. construye el DOM (menú, artículos, formulario, pie)
+       3. carga assets/js/main.js     → navegación por paneles (Dimension)
+       4. carga assets/js/contact.js  → formulario (preselección, envío, Turnstile)
+       5. carga assets/js/cookies.js  → aviso de cookies
+       6. quita la clase «is-preload» y abre la sección del enlace directo</code></pre>
+
+			<div class="note flag">
+				<span class="eyebrow">Consecuencia</span>
+				<p>
+					El cuerpo del sitio necesita JavaScript para mostrarse. Es aceptable para una
+					landing de marketing —los buscadores modernos ejecutan JS— y es el precio de tener
+					todo el contenido en un JSON editable. El <code>&lt;title&gt;</code> y la meta
+					descripción sí van estáticos en el HTML para SEO.
+				</p>
+			</div>
+
+			<h3>Módulos JavaScript propios</h3>
+			<div class="table-scroll">
+				<table>
+					<thead><tr><th>Archivo</th><th>Responsabilidad</th></tr></thead>
+					<tbody>
+						<tr><td><code>render.js</code></td><td>Carga el JSON, arma todo el DOM y orquesta la carga del resto de scripts.</td></tr>
+						<tr><td><code>contact.js</code></td><td>Preselección de servicio (en fase de captura, porque Dimension detiene la propagación del clic dentro de cada <code>&lt;article&gt;</code>), envío del formulario por <code>fetch</code>, aviso flotante, marca de tiempo anti-bot y carga del widget Turnstile.</td></tr>
+						<tr><td><code>cookies.js</code></td><td>Banner de cookies en la primera visita, modal de política, elección guardada en <code>localStorage</code> y expuesta en <code>window.DATAR_COOKIE_CONSENT</code> + evento <code>datar:cookie-consent</code>.</td></tr>
+						<tr><td><code>send.php</code></td><td>Recibe el formulario, aplica las capas de seguridad y envía el correo. Endpoint de diagnóstico en <code>send.php?diag=TOKEN</code>.</td></tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<!-- 4 -->
+		<section id="contenido">
+			<span class="eyebrow">04 — Contenido</span>
+			<h2>Contenido editable</h2>
+			<p>
+				<strong>Todos los textos de la empresa</strong> —incluidas las opciones del desplegable
+				de servicio del formulario— viven en <code>assets/data/contenido.json</code>. Editar el
+				sitio = editar ese archivo; no hace falta tocar HTML.
+			</p>
+
+			<h3>Estructura del JSON</h3>
+			<div class="table-scroll">
+				<table>
+					<thead><tr><th>Clave</th><th>Contenido</th></tr></thead>
+					<tbody>
+						<tr><td><code>meta</code></td><td>Título de la pestaña y meta descripción (SEO).</td></tr>
+						<tr><td><code>empresa</code></td><td>Nombre, teléfono, número de WhatsApp, correo, web y dirección. Fuente única para todo el sitio.</td></tr>
+						<tr><td><code>hero</code></td><td>Título y texto del encabezado + botones.</td></tr>
+						<tr><td><code>nav</code></td><td>Etiquetas y anclas del menú.</td></tr>
+						<tr><td><code>articulos</code></td><td>Las secciones. Cada una tiene bloques: <code>parrafo</code>, <code>subtitulo</code>, <code>lista</code>, <code>lista-alt</code>, <code>servicio</code> (título + subservicios + texto de WhatsApp), <code>acciones</code> (botones).</td></tr>
+						<tr><td><code>contacto</code></td><td>Intro, textos del formulario, <strong>opciones de servicio</strong>, asunto del correo y aviso de confirmación.</td></tr>
+						<tr><td><code>cookies</code></td><td>Textos del banner y de la política de cookies.</td></tr>
+						<tr><td><code>footer</code>, <code>ui</code></td><td>Pie de página y etiquetas sueltas de interfaz.</td></tr>
+					</tbody>
+				</table>
+			</div>
+
+			<h3>Ejemplo — añadir una opción al desplegable de servicio</h3>
+			<pre><code>"contacto": {
+  "formulario": {
+    "servicios": [
+      "Consulta general",
+      "Gestión Ambiental",
+      "Seguridad y Salud Ocupacional",
+      "Gestión de Sistemas (ISO)",
+      "Gestión Social",
+      "Nuevo servicio aquí"
+    ]
+  }
+}</code></pre>
+			<div class="note">
+				<span class="eyebrow">Al editar el JSON</span>
+				<p>
+					Respeta las comillas y las comas de JSON. El texto de un párrafo puede llevar
+					<code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code> y <code>&lt;br&gt;</code>. Tras
+					subir el archivo, recarga con <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>R</kbd>.
+				</p>
+			</div>
+		</section>
+
+		<!-- 5 -->
+		<section id="formulario">
+			<span class="eyebrow">05 — Formulario</span>
+			<h2>Formulario y correo</h2>
+			<p>
+				El formulario se envía por <code>fetch</code> a <code>send.php</code>, que responde en
+				JSON. Así se conserva el aviso flotante y la vuelta al inicio. Si <code>send.php</code>
+				fallara, hay un respaldo que abre el gestor de correo del visitante.
+			</p>
+
+			<h3>Entrega del correo</h3>
+			<p>
+				El correo del dominio <code>@datarconsult.com</code> está alojado en
+				<strong>Hostinger Mail</strong>, un servicio separado del servidor web. Por eso la
+				función <code>mail()</code> local devuelve «éxito» pero el mensaje no se entrega. La
+				solución es <strong>SMTP autenticado</strong>:
+			</p>
+			<ul>
+				<li>Envío con <strong>PHPMailer</strong> (<code>lib/PHPMailer/</code>, v6.9.3) por SMTP autenticado.</li>
+				<li>Buzón real: <code>azalia.robolt@datarconsult.com</code>; <code>info@datarconsult.com</code> es un alias que reenvía a ese buzón.</li>
+				<li>Las credenciales SMTP viven en <code>send.config.php</code> — <strong>solo en el servidor</strong>, nunca en el repositorio (está en <code>.gitignore</code>). La plantilla es <code>send.config.example.php</code>.</li>
+				<li>Diagnóstico: <code>send.php?diag=TOKEN</code> (con el token definido en <code>send.config.php</code>) prueba el envío real y devuelve el resultado.</li>
+			</ul>
+
+			<div class="note">
+				<span class="eyebrow">Recomendado</span>
+				<p>
+					Configurar registros <strong>SPF y DKIM</strong> del dominio para que los correos
+					no caigan en spam. Si el hosting deshabilitara <code>mail()</code> y el SMTP,
+					se migra a otro servicio de envío sin cambiar el formulario.
+				</p>
+			</div>
+		</section>
+
+		<!-- 6 -->
+		<section id="seguridad">
+			<span class="eyebrow">06 — Seguridad</span>
+			<h2>Seguridad</h2>
+			<p>
+				La protección es <strong>por capas (defensa en profundidad)</strong>: cada petición
+				del formulario atraviesa filtros en el borde (Cloudflare) y en el servidor
+				(<code>send.php</code>) antes de que se envíe un correo. El objetivo es que un ataque
+				de volumen no sature el servidor de correo ni llene el buzón de spam.
+			</p>
+
+			<div class="stack">
+				<div class="layer"><span class="n">Borde</span><span class="t">Cloudflare</span><span class="d">El dominio pasa por la red de Cloudflare: SSL/TLS, «Always Use HTTPS», Bot Fight Mode, regla de <em>rate limiting</em> sobre <code>/send.php</code> y mitigación de DDoS. Los bots ni llegan al servidor.</span></div>
+				<div class="layer"><span class="n">1</span><span class="t">Turnstile</span><span class="d">CAPTCHA invisible de Cloudflare. Widget en el formulario (Site Key pública en un <code>&lt;meta&gt;</code>); <code>send.php</code> verifica el token contra Cloudflare con la Secret Key de <code>send.config.php</code>.</span></div>
+				<div class="layer"><span class="n">2</span><span class="t">Honeypot</span><span class="d">Campo oculto <code>_gotcha</code>. Si viene lleno = bot → se descarta con «éxito falso» (no aprende que fue bloqueado).</span></div>
+				<div class="layer"><span class="n">3</span><span class="t">Time-trap</span><span class="d">Marca de tiempo <code>_ts</code>. Rechaza envíos hechos en menos de 3&nbsp;segundos (los bots rellenan al instante).</span></div>
+				<div class="layer"><span class="n">4</span><span class="t">Comprobación de origen</span><span class="d">Las cabeceras <code>Origin</code> / <code>Referer</code> deben pertenecer al propio dominio.</span></div>
+				<div class="layer"><span class="n">5</span><span class="t">Límite de peticiones</span><span class="d">En <code>send.php</code>: máx. 5 envíos por IP cada 10&nbsp;min y 30 por minuto en todo el sitio. Contador en archivo fuera del <em>webroot</em>; si no se puede escribir, no bloquea (fail-open).</span></div>
+				<div class="layer"><span class="n">6</span><span class="t">Heurística de spam</span><span class="d">Descarta mensajes con demasiados enlaces (&gt;3), muy largos (&gt;5000 caracteres) o con BBCode.</span></div>
+				<div class="layer"><span class="n">7</span><span class="t">Saneado y validación</span><span class="d">Se eliminan saltos de línea de los campos (anti-inyección de cabeceras de correo). Nombre, correo válido y mensaje son obligatorios (validación en cliente y en servidor).</span></div>
+			</div>
+
+			<h3>Estado de cada control</h3>
+			<div class="table-scroll">
+				<table>
+					<thead><tr><th>Control</th><th>Dónde se configura</th><th>Estado</th></tr></thead>
+					<tbody>
+						<tr><td>Honeypot</td><td><code>send.php</code> + <code>index.html</code></td><td><span class="pill on">Activo</span></td></tr>
+						<tr><td>Time-trap</td><td><code>send.php</code> + <code>contact.js</code></td><td><span class="pill on">Activo</span></td></tr>
+						<tr><td>Comprobación de origen</td><td><code>send.php</code></td><td><span class="pill on">Activo</span></td></tr>
+						<tr><td>Límite por IP / global</td><td><code>send.php</code> (ajustable en <code>send.config.php</code>)</td><td><span class="pill on">Activo</span></td></tr>
+						<tr><td>Heurística de spam</td><td><code>send.php</code></td><td><span class="pill on">Activo</span></td></tr>
+						<tr><td>Turnstile (cliente)</td><td>Site Key en <code>&lt;meta&gt;</code> de <code>index.html</code></td><td><span class="pill on">Activo</span></td></tr>
+						<tr><td>Turnstile (servidor)</td><td>Secret Key en <code>send.config.php</code></td><td><span class="pill on">Activo</span></td></tr>
+						<tr><td>Cloudflare (proxy + SSL)</td><td>Panel de Cloudflare</td><td><span class="pill on">Activo</span></td></tr>
+						<tr><td>Bot Fight Mode</td><td>Panel de Cloudflare → Security → Bots</td><td><span class="pill todo">Revisar</span></td></tr>
+						<tr><td>Rate limiting en el borde</td><td>Cloudflare → WAF → Rate limiting rules</td><td><span class="pill todo">Recomendado</span></td></tr>
+						<tr><td>SPF / DKIM del dominio</td><td>DNS del dominio</td><td><span class="pill todo">Recomendado</span></td></tr>
+						<tr><td>Endpoint <code>?diag</code> protegido</td><td>Token en <code>send.config.php</code></td><td><span class="pill on">Activo</span></td></tr>
+						<tr><td>Credenciales fuera del repo</td><td><code>.gitignore</code> → <code>send.config.php</code></td><td><span class="pill on">Activo</span></td></tr>
+					</tbody>
+				</table>
+			</div>
+
+			<div class="note flag">
+				<span class="eyebrow">Higiene de credenciales</span>
+				<p>
+					El repositorio es público y no contiene secretos. La contraseña del buzón y las
+					claves de Turnstile solo existen en <code>send.config.php</code> en el servidor.
+					Al cambiar la contraseña del buzón hay que actualizar ese archivo.
+				</p>
+			</div>
+		</section>
+
+		<!-- 7 -->
+		<section id="hosting">
+			<span class="eyebrow">07 — Hosting</span>
+			<h2>Hosting y despliegue</h2>
+			<div class="table-scroll">
+				<table>
+					<tbody>
+						<tr><td>Hosting web</td><td>Hostinger (panel cPanel), PHP 8.2</td></tr>
+						<tr><td>Correo</td><td>Hostinger Mail — buzón <code>azalia.robolt@datarconsult.com</code>, alias <code>info@datarconsult.com</code></td></tr>
+						<tr><td>CDN / borde</td><td>Cloudflare (nameservers del dominio apuntan a Cloudflare)</td></tr>
+						<tr><td>Repositorio</td><td>GitHub — <code>github.com/sistecint/Datarconsult</code> (público), rama <code>main</code></td></tr>
+						<tr><td>Raíz del sitio en el servidor</td><td><code>~/Client/datarconsult.com</code> (es a la vez el repositorio git)</td></tr>
+					</tbody>
+				</table>
+			</div>
+
+			<h3>Actualizar el sitio</h3>
+			<ol>
+				<li><strong>Vía Git de cPanel:</strong> «Git Version Control» → <em>Update from Remote</em>. Si diera «no se puede contactar con el repositorio remoto», casi siempre es porque hay cambios locales en el servidor: en la terminal, <code>git checkout -- &lt;archivo&gt;</code> y luego <code>git pull</code>.</li>
+				<li><strong>Vía carga manual:</strong> subir los archivos modificados por el Administrador de archivos o FTP.</li>
+			</ol>
+
+			<div class="note">
+				<span class="eyebrow">Nunca se sube</span>
+				<p>
+					<code>send.config.php</code> (credenciales) se crea directamente en el servidor y
+					no se versiona. <code>error_log</code> y <code>*.log</code> también están ignorados.
+				</p>
+			</div>
+		</section>
+
+		<!-- 8 -->
+		<section id="mantenimiento">
+			<span class="eyebrow">08 — Mantenimiento</span>
+			<h2>Mantenimiento</h2>
+
+			<h3>Editar textos, servicios o datos de contacto</h3>
+			<p>Editar <code>assets/data/contenido.json</code> y subirlo al servidor.</p>
+
+			<h3>Completar Casos de éxito y Clientes</h3>
+			<p>
+				Añadir bloques en <code>articulos</code> (para casos) y logos en la sección
+				<code>clientes</code>. La estructura ya está lista con contenido de ejemplo.
+			</p>
+
+			<h3>Activar analítica (Google Analytics, Meta Pixel)</h3>
+			<p>
+				El sitio no carga ningún rastreador todavía. El aviso de cookies ya deja el gancho
+				para cargarlo solo con consentimiento:
+			</p>
+			<pre><code>document.addEventListener('datar:cookie-consent', function (e) {
+  if (e.detail === 'accepted') { /* cargar GA4 / Pixel aquí */ }
+});
+// y al cargar la página:
+if (window.DATAR_COOKIE_CONSENT === 'accepted') { /* cargar GA4 / Pixel */ }</code></pre>
+
+			<h3>Cambiar la contraseña del buzón de correo</h3>
+			<p>
+				Cambiarla en Hostinger y actualizar <code>smtp_pass</code> en
+				<code>send.config.php</code> en el servidor. Verificar con
+				<code>send.php?diag=TOKEN</code>.
+			</p>
+
+			<h3>Comprobar que el correo funciona</h3>
+			<p>
+				Abrir <code>https://datarconsult.com/send.php?diag=TOKEN</code>. Debe devolver
+				<code>"envio_prueba_ok": true</code> y llegar un correo de prueba al buzón.
+			</p>
+		</section>
+
+		<!-- 9 -->
+		<section id="inventario">
+			<span class="eyebrow">09 — Inventario</span>
+			<h2>Inventario de archivos</h2>
+			<pre><code>index.html                     Esqueleto de la página
+send.php                       Procesa el formulario + seguridad + envío SMTP
+send.config.php                Credenciales (SOLO servidor · no versionado)
+send.config.example.php        Plantilla de send.config.php
+.gitignore
+
+assets/
+  data/contenido.json          TODO el contenido y textos del sitio
+  css/main.css                 Estilos (Dimension + personalización DATAR + cookies)
+  css/noscript.css
+  css/fontawesome-all.min.css
+  js/render.js                 Pinta el sitio desde el JSON
+  js/contact.js                Formulario: preselección, envío, Turnstile
+  js/cookies.js                Aviso y política de cookies
+  js/main.js                   Dimension: navegación por paneles
+  js/jquery.min.js  browser.min.js  breakpoints.min.js  util.js   (Dimension)
+  webfonts/                    Font Awesome
+
+lib/PHPMailer/                 PHPMailer 6.9.3 (Exception · PHPMailer · SMTP)
+
+images/
+  logo.png                     Isotipo D&C
+  bg_final.jpg                 Fondo (optimizado)
+  overlay.png                  Textura de la plantilla
+
+docs/documentacion.html        Este documento</code></pre>
+
+			<h3>Historial de cambios (resumen)</h3>
+			<div class="table-scroll">
+				<table>
+					<thead><tr><th>Hito</th><th>Detalle</th></tr></thead>
+					<tbody>
+						<tr><td>Transformación</td><td>Plantilla Dimension → One Page de DATAR con el contenido del folleto.</td></tr>
+						<tr><td>Formulario</td><td>Preselección de servicio, mensaje flotante, envío a <code>send.php</code>.</td></tr>
+						<tr><td>Correo</td><td>Migración a SMTP autenticado con PHPMailer (Hostinger Mail).</td></tr>
+						<tr><td>Seguridad</td><td>Honeypot, time-trap, límite por IP/global, origen, heurística de spam, Turnstile, Cloudflare.</td></tr>
+						<tr><td>Contenido</td><td>Todo el texto movido a <code>contenido.json</code>; <code>render.js</code> arma el DOM.</td></tr>
+						<tr><td>Cookies</td><td>Banner de consentimiento + política; gancho para analítica con consentimiento.</td></tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<footer class="doc-footer">
+			<p>
+				Documento vivo. Ante cambios en el sitio, actualizar la sección correspondiente y la
+				versión del encabezado. Preparado por SISTEC para DATAR Consulting.
+			</p>
+		</footer>
+
+	</main>
+	</div>
+</div>
+
+<script>
+	(function () {
+		var root = document.documentElement;
+		var btn = document.getElementById('themeToggle');
+		var KEY = 'datar-doc-theme';
+		try {
+			var saved = localStorage.getItem(KEY);
+			if (saved === 'dark' || saved === 'light') root.setAttribute('data-theme', saved);
+		} catch (e) {}
+
+		function current() {
+			var attr = root.getAttribute('data-theme');
+			if (attr) return attr;
+			return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+		}
+		function label() { btn.textContent = current() === 'dark' ? 'Claro' : 'Oscuro'; }
+		label();
+
+		btn.addEventListener('click', function () {
+			var next = current() === 'dark' ? 'light' : 'dark';
+			root.setAttribute('data-theme', next);
+			try { localStorage.setItem(KEY, next); } catch (e) {}
+			label();
+		});
+	})();
+</script>
+
+</body>
+</html>
