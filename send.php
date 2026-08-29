@@ -73,7 +73,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['diag'])) {
 /* --------------------------- Envío (POST) ------------------------- */
 
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    responder(false, 'Método no permitido.', 405, $esAjax);
+    // Suele pasar cuando el hosting redirige (http->https o www) y el
+    // navegador reenvía la petición como GET. Prueba también ?diag=1.
+    error_log('send.php: petición ' . $_SERVER['REQUEST_METHOD'] . ' (se esperaba POST).');
+    responder(false, 'Método no permitido (se recibió ' . $_SERVER['REQUEST_METHOD'] . ', se esperaba POST).', 405, $esAjax,
+        array('detail' => 'Probable redirección del servidor que convierte el POST en GET. Verifica que la página y el formulario usen la URL canónica (https, con o sin www).'));
 }
 
 // Trampa anti-spam.

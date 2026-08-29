@@ -468,9 +468,13 @@
 								return res.text().then(function (txt) {
 									var data;
 									try { data = JSON.parse(txt); } catch (err) { data = { ok: res.ok }; }
-									return { status: res.status, body: txt, data: data };
+									return { status: res.status, url: res.url, redirected: res.redirected, body: txt, data: data };
 								});
 							}).then(function (r) {
+								if (r.redirected) {
+									console.warn('send.php: la petición fue redirigida a', r.url,
+										'— el POST pudo convertirse en GET. Revisa la URL canónica del sitio.');
+								}
 								if (r.data && r.data.ok) {
 									showToast('Tu información fue enviada, pronto nos ponemos en contacto.');
 								} else {
