@@ -1,8 +1,10 @@
 # Credenciales reales del envío de correo (NO subir al repositorio)
 send.config.php
 
-# Datos en runtime del servidor (límite de peticiones, etc.)
+# Datos en runtime del servidor (límite de peticiones, logs, etc.)
 data/
+error_log
+*.log
 
 # Sistema
 .DS_Store
