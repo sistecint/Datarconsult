@@ -199,15 +199,23 @@
       "id": "clientes",
       "titulo": "Clientes",
       "bloques": [
-        { "tipo": "parrafo", "html": "Espacio reservado para el mural de logos de clientes. <em>Se incorporará cuando el cliente entregue los logos y la autorización correspondiente.</em>" },
-        { "tipo": "subtitulo", "texto": "Tipos de clientes" },
-        { "tipo": "lista-alt", "items": [
-          "Empresas industriales y alimenticias",
-          "Constructoras y proyectos de infraestructura",
-          "Empresas del sector marítimo",
-          "Generación eléctrica",
-          "Organizaciones de conservación biológica"
-        ] },
+        { "tipo": "subtitulo", "texto": "Industrias en las que hemos trabajado" },
+        { "tipo": "parrafo", "texto": "Acompañamos a empresas de diversos sectores en su gestión ambiental, de seguridad y de sistemas:" },
+
+        { "tipo": "subtitulo", "texto": "Recolección y manejo de desechos comunes y no comunes" },
+        { "tipo": "parrafo", "texto": "Apoyamos a empresas de recolección, transporte y disposición final de desechos comunes y no comunes en el cumplimiento de permisos y normativa ambiental. Incluye planes de manejo de desechos, auditorías y capacitación al personal operativo." },
+
+        { "tipo": "subtitulo", "texto": "Construcción" },
+        { "tipo": "parrafo", "texto": "Acompañamos proyectos de construcción e infraestructura desde la obtención de permisos y estudios de impacto ambiental hasta la implementación de planes de manejo en obra. También apoyamos en seguridad y salud ocupacional durante la ejecución del proyecto." },
+
+        { "tipo": "subtitulo", "texto": "Industrial de carácter alimenticio" },
+        { "tipo": "parrafo", "texto": "Asesoramos a plantas de producción de alimentos en el cumplimiento ambiental, el manejo de desechos y la implementación de sistemas de gestión (ISO). Complementamos con programas de seguridad y salud ocupacional para el personal de planta." },
+
+        { "tipo": "subtitulo", "texto": "Energético" },
+        { "tipo": "parrafo", "texto": "Brindamos acompañamiento ambiental a proyectos de generación eléctrica, incluyendo permisos, monitoreos y gestión social con las comunidades vecinas. También apoyamos la seguridad ocupacional en las operaciones de planta." },
+
+        { "tipo": "subtitulo", "texto": "Saneamiento y control de manejo de aguas residuales" },
+        { "tipo": "parrafo", "texto": "Apoyamos a empresas dedicadas al tratamiento y control de aguas residuales en el cumplimiento de permisos de descarga y monitoreo de calidad de agua. Incluye auditorías ambientales y capacitación técnica al personal." },
         { "tipo": "acciones", "items": [
           { "texto": "Ver cómo podemos ayudarte", "servicio": "Consulta general" }
         ] }
