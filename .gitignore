@@ -6,6 +6,11 @@ send.config.php
 error_log
 *.log
 
+# Carpeta manual en el servidor (Nextcloud) para intercambio de archivos.
+# No forma parte del sitio y contiene credenciales reales en config/config.php:
+# NUNCA debe subirse al repositorio.
+/share/
+
 # Sistema
 .DS_Store
 Thumbs.db
